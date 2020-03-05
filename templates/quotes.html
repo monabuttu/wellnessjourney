@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<script src="https://kit.fontawesome.com/0ed3f505e9.js" crossorigin="anonymous"></script>
+<body>
+    <div class="icon-bar">
+        <a href="/"><i class="fas fa-home"></i></a>
+        <a href="/log"><i class="fas fa-book-open"></i></a>
+        <a class="active" href="/quotes"><i class="fas fa-quote-right"></i></a>
+        <a href="/faith"><i class="fas fa-star-and-crescent "></i></a>
+        <a href="/videos"><i class="fas fa-video"></i></a>
+        <a href="/analysis"><i class="fas fa-chart-line fa-md"></i></a>
+        
+    </div>
+    <p>Use this space to log your affirmations, positive thoughts and favorite quotes!</p>
+    <form method='POST' action="/quotes" role='form' name='userentry'> 
+        <label for="affirm">Affirmations</label>
+        <input type="text" id="affirm" name="affirmation" placeholder="Enter your affirmation"><br>
+        <label for="qte">Quote</label>
+        <input type="text" id="qte" name="quote" placeholder="Enter your favorite quote"><br>
+        <label for="thgt">Postive Thought</label>
+        <input type="text" id="thgt" name="thought" placeholder="Enter a postive thought"><br>
+        <input type="submit" value="Submit Entry">
+    </form>
+</body>
+</html>
