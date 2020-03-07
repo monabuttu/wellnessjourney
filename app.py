@@ -1,9 +1,10 @@
 # import flask class
-from flask import Flask,render_template, redirect, request
+from flask import Flask,render_template, redirect, request, jsonify
 from flask_pymongo import PyMongo
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime
+# from bson import binary,code
 
 # create instance of flask class
 app = Flask(__name__)
@@ -57,6 +58,22 @@ def entry():
 
     print(entry_date)    
     return render_template("entry.html")
+
+@app.route("/api/yourquotes")
+def yourquotes():
+    query = mongo.db.quotes.find()
+    query_list=[]
+    for x in query:
+        query_dict={}
+        query_dict['affirmation'] = x['affirmation']
+        query_dict['quote'] = x['quote']
+        query_dict['thought'] = x['thought']
+        try:
+            query_dict['date'] = x['date']
+        except:
+            query_dict['date'] = ''
+        query_list.append(query_dict)
+    return jsonify(query_list)
     
 if __name__ == "__main__":
     app.run(debug=True)
