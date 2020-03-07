@@ -1,6 +1,9 @@
 # import flask class
 from flask import Flask,render_template, redirect, request
 from flask_pymongo import PyMongo
+from textblob import TextBlob
+from textblob.classifiers import NaiveBayesClassifier
+from datetime import datetime
 
 # create instance of flask class
 app = Flask(__name__)
@@ -26,11 +29,17 @@ def quotes():
         affirmation = request.form['affirmation']
         quote = request.form['quote']
         thought = request.form['thought']
+        date = datetime.now()
         print(affirmation)
         print(quote)
         print(thought)
     # Update the Mongo database 
-    # mongo.db.collection.update({}, affirmation, upsert=True)
+        mongo.db.quotes.insert({
+            "affirmation": affirmation,
+            "quote": quote,
+            "thought": thought,
+            "date": date
+            })
     return render_template("quotes.html")
 
 @app.route("/faith")
