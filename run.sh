@@ -1,0 +1,1 @@
+FLASK_APP=wellnessjourney/app.py flask run
