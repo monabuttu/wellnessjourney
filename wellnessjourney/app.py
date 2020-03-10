@@ -9,7 +9,7 @@ from datetime import datetime
 # create instance of flask class
 app = Flask(__name__)
 
-mongo = PyMongo(app, uri="mongodb://heroku_5dsnbzq6:n7n5lhm2511elp2vi6ennpsqh5@ds149998.mlab.com:49998/heroku_5dsnbzq6")
+mongo = PyMongo(app, uri="mongodb://heroku_5dsnbzq6:n7n5lhm2511elp2vi6ennpsqh5@ds149998.mlab.com:49998/heroku_5dsnbzq6",retryWrites=False)
 
 @app.route("/")
 def home():
