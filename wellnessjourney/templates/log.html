@@ -14,7 +14,7 @@
         
     </div>
 
-    <form method="POST" action="/entrysubmited">
+    <form method='POST' action="/analysis" role='form' name='logentry'>
       <label for="entrydate">Entry Date</label><br>
       <br>
       <input type="date" id="entrydate" name="entrydate"><br>
@@ -24,20 +24,20 @@
     <p>How would you describe your current mood?</p>
 
     
-      <input type="radio" id="sad" name="gender" value="sad">
-      <label for="male">Sad</label><br>
-      <input type="radio" id="mad" name="gender" value="mad">
-      <label for="female">Mad</label><br>
-      <input type="radio" id="happy" name="gender" value="happy">
-      <label for="other">Happy</label><br>
+      <input type="radio" id="sad" name="feeling" value="sad">
+      <label for="sad">Sad</label><br>
+      <input type="radio" id="mad" name="feeling" value="mad">
+      <label for="mad">Mad</label><br>
+      <input type="radio" id="happy" name="feeling" value="happy">
+      <label for="happy">Happy</label><br>
       <br>
     
 
     <p>How strongly are you feeling this feeling in this moment?</p>
 
     
-      <label for="quantity">Quantity (between 1 and 10):</label>
-      <input type="number" id="quantity" name="quantity" min="1" max="10">
+      <label for="rate">Rate (between 1 and 10):</label>
+      <input type="number" id="quantity" name="rate" min="1" max="10">
 
     <p>Describe what happened today that made you feel this way?</p>
 

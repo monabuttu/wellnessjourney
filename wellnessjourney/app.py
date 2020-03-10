@@ -47,17 +47,17 @@ def quotes():
 def faith():
     return render_template("faith.html")
 
-@app.route("/analysis")
+@app.route("/analysis", methods=["GET","POST"])
 def analysis():
-    return render_template("analysis.html")
-
-@app.route("/entrysubmitted", methods=["GET","POST"])
-def entry():
     if request.method == "POST":
         entry_date = request.form["entrydate"]
-
-    print(entry_date)    
-    return render_template("entry.html")
+        rate = request.form["rate"]
+        msg = request.form["message"]
+        feeling = request.form["feeling"]
+        print(rate)
+        print(msg)
+        print(feeling)
+    return render_template("analysis.html")
 
 @app.route("/api/yourquotes")
 def yourquotes():
@@ -75,5 +75,7 @@ def yourquotes():
         query_list.append(query_dict)
     return jsonify(query_list)
     
+if __name__ == "__main__":
+    app.run(debug=True)
 if __name__ == "__main__":
     app.run(debug=True)
