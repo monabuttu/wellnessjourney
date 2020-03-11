@@ -10,8 +10,10 @@ body {
 
 .icon-bar {
   width: 100%;
-  background-color:pink;
+  background-color:transparent;
   overflow: auto;
+  position: fixed;
+  bottom: 0;
 }
 
 .icon-bar a {
@@ -117,5 +119,12 @@ html {
   }
   to {
     transform: translateY(-2000px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .icon-bar a {
+    float: none;
+    display: block;
   }
 }
