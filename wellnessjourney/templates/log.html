@@ -23,53 +23,57 @@
 </head>
 <script src="https://kit.fontawesome.com/0ed3f505e9.js" crossorigin="anonymous"></script>
 <body>
-    <div class="navbar icon-bar">
+    <div class="container navbar icon-bar">
         <a href="/"><i class="fas fa-home"></i></a>
         <a class="active" href="/log"><i class="fas fa-book-open"></i></a>
         <a href="/quotes"><i class="fas fa-quote-right"></i></a>
         <a href="/faith"><i class="fas fa-star-and-crescent"></i></a>
         <a href="/videos"><i class="fas fa-video"></i></a>
         <a href="/analysis"><i class="fas fa-chart-line"></i></a>
-        
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <form method='POST' action="/analysis" role='form' name='logentry'>
+            <label for="entrydate">Entry Date</label><br>
+            <br>
+            <input type="date" id="entrydate" name="entrydate"><br>
+            <br>
+          
 
-    <div>
-    <form method='POST' action="/analysis" role='form' name='logentry'>
-      <label for="entrydate">Entry Date</label><br>
-      <br>
-      <input type="date" id="entrydate" name="entrydate"><br>
-      <br>
-    
+            <p>How would you describe your current mood?</p>
 
-    <p>How would you describe your current mood?</p>
+          
+            <input type="radio" id="sad" name="feeling" value="sad">
+            <label for="sad">Sad</label><br>
+            <input type="radio" id="mad" name="feeling" value="mad">
+            <label for="mad">Mad</label><br>
+            <input type="radio" id="happy" name="feeling" value="happy">
+            <label for="happy">Happy</label><br>
+            <br>
+          
 
-    
-      <input type="radio" id="sad" name="feeling" value="sad">
-      <label for="sad">Sad</label><br>
-      <input type="radio" id="mad" name="feeling" value="mad">
-      <label for="mad">Mad</label><br>
-      <input type="radio" id="happy" name="feeling" value="happy">
-      <label for="happy">Happy</label><br>
-      <br>
-    
+            <p>How strongly are you feeling this feeling in this moment?</p>
 
-    <p>How strongly are you feeling this feeling in this moment?</p>
+          
+            <label for="rate">Rate (between 1 and 10):</label>
+            <input type="number" id="quantity" name="rate" min="1" max="10">
 
-    
-      <label for="rate">Rate (between 1 and 10):</label>
-      <input type="number" id="quantity" name="rate" min="1" max="10">
+            <p>Describe what happened today that made you feel this way?</p>
 
-    <p>Describe what happened today that made you feel this way?</p>
-
-    
-      <textarea name="message" rows="20" cols="60"></textarea><br>
-      <input type="submit" value="Submit">
-    </form>
+          
+            <textarea name="message" rows="10" cols="50"></textarea><br>
+            <input type="submit" value="Submit">
+          </form>
+      </div>
     </div>
-
+  </div>
     <div id="stars"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
+  </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
