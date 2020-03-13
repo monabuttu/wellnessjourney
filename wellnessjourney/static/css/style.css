@@ -1,37 +1,7 @@
-body {
-  /* padding-top: 10px; */
-  /* padding-left: 5px;
-  padding-right:5px; */
-}
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
-}
-
-.icon-bar {
-  width: 100%;
-  background-color:transparent;
-  overflow: auto;
-  position: fixed;
-  bottom: 0;
-}
-
-.icon-bar a {
-  float: left;
-  width: 16%;
-  text-align: center;
-  padding: 12px 0;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 36px;
-}
-
-.icon-bar a:hover {
-  background-color:rgb(22, 18, 18);
-}
-
-.active {
-  background-color: rgb(22, 18, 18);
 }
 
 /* Parallax Pixel Stars */
@@ -122,9 +92,73 @@ html {
   }
 }
 
-@media screen and (max-width: 500px) {
+
+.icon-bar {
+  width: 100%;
+  background-color:transparent;
+  overflow: auto;
+  position: fixed;
+  bottom: 0;
+}
+
+.icon-bar a {
+  float: left;
+  width: 16%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.navbar li>a {
+  float: left;
+  width: 16%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color:rgb(22, 18, 18);
+}
+
+.active {
+  background-color: rgb(22, 18, 18);
+}
+
+@media screen and (max-width: 860px) {
   .icon-bar a {
     float: none;
     display: block;
+    font-size: 20px;
   }
+
+  .navbar li>a {
+    padding-top:5px;
+    padding-bottom:5px;
+    float: none;
+    display: block;
+}
+  .navbar-brand {
+    padding:20px;
+}
+
+}
+
+@media screen and (max-width: 330px) {
+  .icon-bar a {
+    float: none;
+    display: block;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 513px){
+  .active {
+    background-color: transparent;
+    color: black;
+  }
+  
 }

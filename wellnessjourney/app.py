@@ -43,10 +43,6 @@ def quotes():
             })
     return render_template("quotes.html")
 
-@app.route("/faith")
-def faith():
-    return render_template("faith.html")
-
 @app.route("/analysis", methods=["GET","POST"])
 def analysis():
     if request.method == "POST":
