@@ -30,9 +30,9 @@
       <a href="/videos"><i class="fas fa-video"></i><br>Videos</a>
       <a href="/analysis"><i class="fas fa-chart-line"></i><br>Analysis</a>
     </div>
-    <div class="container">
+    <div class="container" >
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm" id="entryform">
           <form method='POST' action="/analysis" role='form' name='logentry'>
             <label for="entrydate">Entry Date</label><br>
             <br>
@@ -61,7 +61,7 @@
             <p>Describe what happened today that made you feel this way?</p>
 
           
-            <textarea name="message" rows="10" cols="50"></textarea><br>
+            <textarea name="message" style="width:90%; height:10%"></textarea><br>
             <input type="submit" value="Submit">
           </form>
       </div>

@@ -63,26 +63,6 @@ html {
   box-shadow: 728px 99px #FFF , 997px 1822px #FFF , 1096px 1916px #FFF , 803px 477px #FFF , 1716px 1791px #FFF , 44px 188px #FFF , 168px 1110px #FFF , 309px 1258px #FFF , 1199px 712px #FFF , 415px 1622px #FFF , 1786px 1537px #FFF , 109px 1104px #FFF , 1512px 29px #FFF , 548px 115px #FFF , 743px 1068px #FFF , 1434px 510px #FFF , 588px 1195px #FFF , 727px 33px #FFF , 770px 151px #FFF , 1653px 1864px #FFF , 1032px 1637px #FFF , 880px 372px #FFF , 1092px 1884px #FFF , 1869px 1497px #FFF , 964px 550px #FFF , 1959px 1825px #FFF , 1823px 62px #FFF , 559px 35px #FFF , 1604px 1090px #FFF , 1815px 1652px #FFF , 658px 1435px #FFF , 812px 1749px #FFF , 672px 347px #FFF , 239px 1470px #FFF , 327px 1224px #FFF , 1525px 1863px #FFF , 1533px 32px #FFF , 672px 843px #FFF , 1060px 84px #FFF , 1696px 1427px #FFF , 1692px 1341px #FFF , 974px 1629px #FFF , 473px 1593px #FFF , 770px 1117px #FFF , 1504px 1228px #FFF , 848px 267px #FFF , 1688px 1598px #FFF , 1733px 533px #FFF , 1369px 492px #FFF , 1598px 761px #FFF , 888px 1032px #FFF , 848px 1138px #FFF , 1176px 1206px #FFF , 1706px 1246px #FFF , 1559px 1603px #FFF , 1230px 1348px #FFF , 1251px 785px #FFF , 954px 165px #FFF , 576px 1540px #FFF , 707px 1784px #FFF , 1916px 215px #FFF , 1425px 109px #FFF , 1000px 37px #FFF , 1406px 1799px #FFF , 1187px 1865px #FFF , 1021px 611px #FFF , 357px 451px #FFF , 1261px 1362px #FFF , 356px 1554px #FFF , 690px 1486px #FFF , 479px 1473px #FFF , 1120px 328px #FFF , 1636px 1082px #FFF , 1378px 639px #FFF , 971px 28px #FFF , 953px 1607px #FFF , 905px 1769px #FFF , 1931px 443px #FFF , 556px 294px #FFF , 1753px 1706px #FFF , 80px 1827px #FFF , 866px 570px #FFF , 423px 1808px #FFF , 741px 1730px #FFF , 1997px 1119px #FFF , 1483px 1280px #FFF , 375px 914px #FFF , 1080px 323px #FFF , 1582px 506px #FFF , 181px 832px #FFF , 57px 1992px #FFF , 1422px 1346px #FFF , 1974px 229px #FFF , 1572px 1656px #FFF , 1662px 998px #FFF , 20px 1184px #FFF , 1381px 1046px #FFF , 501px 987px #FFF , 168px 560px #FFF , 1882px 1546px #FFF;
 }
 
-#title {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  color: #FFF;
-  text-align: center;
-  font-family: "lato", sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 10px;
-  margin-top: -60px;
-  padding-left: 10px;
-}
-#title span {
-  background: -webkit-linear-gradient(white, #38495a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 @keyframes animStar {
   from {
     transform: translateY(0px);
@@ -92,30 +72,40 @@ html {
   }
 }
 
+#entryform {
+  max-height: 80vh;
+  max-width: 90vw;
+  overflow: auto;
+  padding-top: 10;
+  padding-bottom: 10;
+}
 
+.main_wrapper {
+  height:90%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:9999;
+}
+.content {
+  height:84%;
+  overflow:auto;
+}
+.bottom_menu {
+  height:6%;
+}
 .icon-bar {
   width: 100%;
   background-color:transparent;
   overflow: auto;
-  position: fixed;
-  bottom: 0;
 }
 
 .icon-bar a {
   float: left;
   width: 16%;
   text-align: center;
-  padding: 12px 0;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 36px;
-}
-
-.navbar li>a {
-  float: left;
-  width: 16%;
-  text-align: center;
-  padding: 12px 0;
   transition: all 0.3s ease;
   color: white;
   font-size: 36px;
@@ -137,15 +127,26 @@ html {
   }
 
   .navbar li>a {
-    padding-top:5px;
-    padding-bottom:5px;
     float: none;
     display: block;
 }
-  .navbar-brand {
-    padding:20px;
-}
 
+.main_wrapper {
+  height:95%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:9999;
+}
+.content {
+  height:92%;
+  overflow:auto;
+}
+.bottom_menu {
+  height:3%;
+}
 }
 
 @media screen and (max-width: 330px) {
