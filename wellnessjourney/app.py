@@ -4,7 +4,8 @@ from flask_pymongo import PyMongo
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime
-# from bson import binary,code
+from config import api_key
+from apiclient.discovery import build
 
 # create instance of flask class
 app = Flask(__name__)
@@ -19,8 +20,27 @@ def home():
 def log():
     return render_template("log.html")
 
-@app.route("/videos")
+@app.route("/videos",methods=['POST','GET'])
 def videos():
+    if request.method == 'POST':
+        date = datetime.now()
+        selection = request.form["selection"]
+        mongo.db.selection.insert({
+            "selection": selection,
+            "date": date
+            })
+        youtube = build('youtube','v3',developerKey=api_key)
+        video_request = youtube.search().list(q=f'{selection} motivation',part='snippet',type='video',relevanceLanguage='en',
+                                        videoCategoryId='27',videoDuration='short',order='viewCount', maxResults=1,
+                                        regionCode='US')
+        response = video_request.execute()
+        for x in response['items']:
+            video_id = x['id']['videoId']
+            title = x['snippet']['title']
+            mongo.db.videos.insert({
+            "video_id": video_id,
+            "title":title
+            })
     return render_template("videos.html")
 
 @app.route("/quotes",methods=['POST','GET'])
@@ -68,6 +88,28 @@ def yourquotes():
             query_dict['date'] = x['date']
         except:
             query_dict['date'] = ''
+        query_list.append(query_dict)
+    return jsonify(query_list)
+
+@app.route("/api/yourselection")
+def yourselection():
+    query = mongo.db.selection.find()
+    query_list=[]
+    for x in query:
+        query_dict={}
+        query_dict['selection'] = x['selection']
+        query_dict['date'] = x['date']
+        query_list.append(query_dict)
+    return jsonify(query_list)
+
+@app.route("/api/yourvideos")
+def yourvideos():
+    query = mongo.db.videos.find()
+    query_list=[]
+    for x in query:
+        query_dict={}
+        query_dict['video_id'] = x['video_id']
+        query_dict['title'] = x['title']
         query_list.append(query_dict)
     return jsonify(query_list)
     
