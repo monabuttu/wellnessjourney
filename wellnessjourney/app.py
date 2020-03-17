@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime
-from config import api_key
+from .config import api_key
 from apiclient.discovery import build
 
 # create instance of flask class
