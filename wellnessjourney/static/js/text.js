@@ -16,7 +16,7 @@ form.append('span').html(`<input type = 'radio' value = 'long' id='long' name='l
 
 
 // create search words
-var traits = ['Grit','Patience','Responsibility','Willpower','Confidence','Positivity',
+var traits = ['Grit','Patience','Responsibility','Willpower','Confidence','Positive Thinking','Planning',
 'Focus','Passion','Resiliency','Faith','Courage','Discipline'];
 
 d3.select('#successcharacteristics').html(`<p>${traits_intro}</p><br><p>Choose one of the below to start your journey towards building a mind-set ready for success!</p>`)

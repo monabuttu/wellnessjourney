@@ -39,15 +39,24 @@
             <input type="date" id="entrydate" name="entrydate"><br>
             <br>
             <p>How would you describe your current mood?</p>
-            <input type="radio" id="sad" name="feeling" value="sad">
-            <label for="sad">Sad</label><br>
-            <input type="radio" id="mad" name="feeling" value="mad">
-            <label for="mad">Mad</label><br>
-            <input type="radio" id="happy" name="feeling" value="happy">
-            <label for="happy">Happy</label><br>
+            <label for="mood">Choose a car:</label>
+            <select id="mood" name="mood">
+              <option value="happy">Happy</option>
+              <option value="proud">Proud</option>
+              <option value="nervous">Nervous</option>
+              <option value="anxious">Anxious</option>
+              <option value="dissapointed">Dissapointed</option>
+              <option value="excited">Excited</option>
+              <option value="grateful">Grateful</option>
+              <option value="calm">Calm</option>
+            </select>
             <br>
             <p>Describe what happened today that made you feel this way?</p>
             <textarea name="message" style="width:90%; height:10%"></textarea><br>
+            <p>Identify something you want to work on tomorrow</p>
+            <textarea name="message1" style="width:90%; height:10%"></textarea><br>
+            <p>Identify something you are grateful for</p>
+            <textarea name="message2" style="width:90%; height:10%"></textarea><br>
             <input type="submit" value="Submit">
           </form>
       </div>

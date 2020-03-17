@@ -149,14 +149,19 @@ html {
 }
 }
 
+@media screen and (max-width: 464px) {
+  .icon-bar a {
+    font-size: 11px;
+  }
+}
+
 @media screen and (max-width: 330px) {
   .icon-bar a {
     float: none;
     display: block;
-    font-size: 15px;
   }
 }
-@media screen and (max-width: 513px){
+@media screen and (max-width: 464px){
   .active {
     background-color: transparent;
     color: black;

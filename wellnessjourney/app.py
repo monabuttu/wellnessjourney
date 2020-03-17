@@ -71,13 +71,20 @@ def videoquotes():
 @app.route("/analysis", methods=["GET","POST"])
 def analysis():
     if request.method == "POST":
+        date = datetime.now()
         entry_date = request.form["entrydate"]
-        rate = request.form["rate"]
+        mood = request.form["mood"]
         msg = request.form["message"]
-        feeling = request.form["feeling"]
-        print(rate)
-        print(msg)
-        print(feeling)
+        msg1= request.form["message1"]
+        msg2 = request.form["message2"]
+        mongo.db.entries.insert({
+        "date": date,
+        "mood": mood,
+        "today": msg,
+        "tomorrow": msg1,
+        "gratitude": msg2
+        })
+        
     return render_template("analysis.html")
 
 @app.route("/api/yourquotes")
