@@ -164,6 +164,9 @@ html {
 @media screen and (max-width: 464px){
   .active {
     background-color: transparent;
+  }
+
+  .black {
     color: black;
   }
   
