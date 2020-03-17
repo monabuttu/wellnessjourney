@@ -153,15 +153,11 @@ html {
   .icon-bar a {
     font-size: 13px;
   }
-}
 
-@media screen and (max-width: 330px) {
-  .icon-bar a {
-    float: none;
-    display: block;
+  .icon-bar a:hover {
+    background-color:transparent;
   }
-}
-@media screen and (max-width: 464px){
+
   .active {
     background-color: transparent;
   }
@@ -169,5 +165,11 @@ html {
   .black {
     color: black;
   }
-  
+}
+
+@media screen and (max-width: 330px) {
+  .icon-bar a {
+    float: none;
+    display: block;
+  }
 }
