@@ -24,10 +24,10 @@
 <script src="https://kit.fontawesome.com/0ed3f505e9.js" crossorigin="anonymous"></script>
 <body>
   <div class="navbar icon-bar">
-    <a href="/"><i class="fas fa-home"></i><br>Home</a>
+    <a href="/"><i class="fas fa-sun"></i><br>Motivation</a>
+    <a class="active" href="/videos"><i class="fas fa-video"></i><br>Videos</a>
     <a href="/log"><i class="fas fa-book-open"></i><br>Journal</a>
     <a href="/quotes"><i class="fas fa-quote-right"></i><br>Quotes</a>
-    <a class="active" href="/videos"><i class="fas fa-video"></i><br>Videos</a>
     <a href="/analysis"><i class="fas fa-chart-line"></i><br>Analysis</a>
   </div>
 
@@ -35,6 +35,23 @@
     <div class="row">
       <div class="col">
          <div id='videos'></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>Use this space to log your affirmations, positive thoughts and favorite quotes!</p>
+        <form method='POST' action="/videoquotes" role='form' name='userentry'> 
+            <label for="affirm">Affirmations</label>
+            <input type="text" id="affirm" name="affirmation" placeholder="Enter your affirmation"><br>
+            <label for="qte">Quote</label>
+            <input type="text" id="qte" name="quote" placeholder="Enter your favorite quote"><br>
+            <label for="thgt">Postive Thought</label>
+            <input type="text" id="thgt" name="thought" placeholder="Enter a postive thought"><br>
+            <input type="submit" value="Submit Entry">
+        </form>
       </div>
     </div>
   </div>

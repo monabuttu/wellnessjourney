@@ -24,25 +24,21 @@
 <script src="https://kit.fontawesome.com/0ed3f505e9.js" crossorigin="anonymous"></script>
 <body>
     <div class="navbar icon-bar">
-      <a href="/"><i class="fas fa-home"></i><br>Home</a>
+      <a href="/"><i class="fas fa-sun"></i><br>Motivation</a>
+      <a href="/videos"><i class="fas fa-video"></i><br>Videos</a>
       <a class="active"  href="/log"><i class="fas fa-book-open"></i><br>Journal</a>
       <a href="/quotes"><i class="fas fa-quote-right"></i><br>Quotes</a>
-      <a href="/videos"><i class="fas fa-video"></i><br>Videos</a>
       <a href="/analysis"><i class="fas fa-chart-line"></i><br>Analysis</a>
     </div>
     <div class="container" >
       <div class="row">
-        <div class="col-sm" id="entryform">
+        <div class="col" id="entryform">
           <form method='POST' action="/analysis" role='form' name='logentry'>
             <label for="entrydate">Entry Date</label><br>
             <br>
             <input type="date" id="entrydate" name="entrydate"><br>
             <br>
-          
-
             <p>How would you describe your current mood?</p>
-
-          
             <input type="radio" id="sad" name="feeling" value="sad">
             <label for="sad">Sad</label><br>
             <input type="radio" id="mad" name="feeling" value="mad">
@@ -50,17 +46,7 @@
             <input type="radio" id="happy" name="feeling" value="happy">
             <label for="happy">Happy</label><br>
             <br>
-          
-
-            <p>How strongly are you feeling this feeling in this moment?</p>
-
-          
-            <label for="rate">Rate (between 1 and 10):</label>
-            <input type="number" id="quantity" name="rate" min="1" max="10">
-
             <p>Describe what happened today that made you feel this way?</p>
-
-          
             <textarea name="message" style="width:90%; height:10%"></textarea><br>
             <input type="submit" value="Submit">
           </form>
