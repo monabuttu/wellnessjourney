@@ -23,49 +23,53 @@
 </head>
 <script src="https://kit.fontawesome.com/0ed3f505e9.js" crossorigin="anonymous"></script>
 <body>
-    <div class="navbar icon-bar">
-      <a href="/"><i class="fas fa-sun"></i><br>Motivation</a>
-      <a href="/videos"><i class="fas fa-video"></i><br>Videos</a>
-      <a class="active"  href="/log"><i class="fas fa-book-open black"></i><br>Journal</a>
-      <a href="/quotes"><i class="fas fa-quote-right"></i><br>Quotes</a>
-      <a href="/analysis"><i class="fas fa-chart-line"></i><br>Analysis</a>
-    </div>
-    <div class="container" >
-      <div class="row">
-        <div class="col" id="entryform">
-          <form method='POST' action="/analysis" role='form' name='logentry'>
-            <br>
-            <p>How would you describe your current mood?</p>
-            <label for="mood">Choose a mood:</label>
-            <select id="mood" name="mood">
-              <option value=""></option>
-              <option value="happy">Happy</option>
-              <option value="proud">Proud</option>
-              <option value="nervous">Nervous</option>
-              <option value="anxious">Anxious</option>
-              <option value="dissapointed">Dissapointed</option>
-              <option value="excited">Excited</option>
-              <option value="grateful">Grateful</option>
-              <option value="calm">Calm</option>
-            </select>
-            <br>
-            <p>Describe what happened today that made you feel this way?</p>
-            <textarea name="message" style="width:90%; height:10%"></textarea><br>
-            <p>Identify something you want to work on tomorrow</p>
-            <textarea name="message1" style="width:90%; height:10%"></textarea><br>
-            <p>Identify something you are grateful for</p>
-            <textarea name="message2" style="width:90%; height:10%"></textarea><br>
-            <input type="submit" value="Submit">
-          </form>
+  <div class="main_wrapper">
+    <div class="content">
+      <div class="container" >
+        <div class="row">
+          <div class="col" id="entryform">
+            <form method='POST' action="/analysis" role='form' name='logentry'>
+              <br>
+              <p>How would you describe your current mood?</p>
+              <label for="mood">Choose a mood:</label>
+              <select id="mood" name="mood">
+                <option value=""></option>
+                <option value="happy">Happy</option>
+                <option value="proud">Proud</option>
+                <option value="nervous">Nervous</option>
+                <option value="anxious">Anxious</option>
+                <option value="dissapointed">Dissapointed</option>
+                <option value="excited">Excited</option>
+                <option value="grateful">Grateful</option>
+                <option value="calm">Calm</option>
+              </select>
+              <br>
+              <p>Describe what happened today that made you feel this way?</p>
+              <textarea name="message" style="width:100%; height:10%"></textarea><br>
+              <p>Identify something you want to work on tomorrow</p>
+              <textarea name="message1" style="width:100%; height:10%"></textarea><br>
+              <p>Identify something you are grateful for</p>
+              <textarea name="message2" style="width:100%; height:10%"></textarea><br>
+              <input type="submit" value="Submit">
+            </form>
+        </div>
       </div>
     </div>
-  </div>
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
-  </div>
+    </div>
+    <div class="bottom_menu">
+      <div class="navbar icon-bar">
+        <a href="/"><i class="fas fa-sun"></i><br>Motivation</a>
+        <a href="/videos"><i class="fas fa-video"></i><br>Videos</a>
+        <a class="active"  href="/log"><i class="fas fa-book-open black"></i><br>Journal</a>
+        <a href="/quotes"><i class="fas fa-quote-right"></i><br>Quotes</a>
+        <a href="/analysis"><i class="fas fa-chart-line"></i><br>Analysis</a>
+      </div>
+    </div>
 
-
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+  </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

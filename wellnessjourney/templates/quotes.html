@@ -23,26 +23,29 @@
 </head>
 <script src="https://kit.fontawesome.com/0ed3f505e9.js" crossorigin="anonymous"></script>
 <body>
-    <div class="navbar icon-bar">
-      <a href="/"><i class="fas fa-sun"></i><br>Motivation</a>
-      <a href="/videos"><i class="fas fa-video"></i><br>Videos</a>
-      <a href="/log"><i class="fas fa-book-open"></i><br>Journal</a>
-      <a class="active" href="/quotes"><i class="fas fa-quote-right black"></i><br>Quotes</a>
-      <a href="/analysis"><i class="fas fa-chart-line"></i><br>Analysis</a>
-    </div>
-    <div class="container"> 
-      <div class="row">
-        <div class="col">
-           <div id='quotes'></div>
+  <div class="main_wrapper">
+    <div class="content">
+      <div class="container"> 
+        <div class="row">
+          <div class="col">
+            <div id='quotes'></div>
+          </div>
         </div>
       </div>
     </div>
-    
-
+    <div class="bottom_menu">
+      <div class="navbar icon-bar">
+        <a href="/"><i class="fas fa-sun"></i><br>Motivation</a>
+        <a href="/videos"><i class="fas fa-video"></i><br>Videos</a>
+        <a href="/log"><i class="fas fa-book-open"></i><br>Journal</a>
+        <a class="active" href="/quotes"><i class="fas fa-quote-right black"></i><br>Quotes</a>
+        <a href="/analysis"><i class="fas fa-chart-line"></i><br>Analysis</a>
+      </div>
+    </div>
     <div id="stars"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
-
+  </div>  
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="/static/js/quotes.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
