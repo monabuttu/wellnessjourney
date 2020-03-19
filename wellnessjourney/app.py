@@ -6,6 +6,7 @@ from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime
 from .config import api_key
 from apiclient.discovery import build
+import nltk
 
 # create instance of flask class
 app = Flask(__name__)
