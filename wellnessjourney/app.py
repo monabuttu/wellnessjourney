@@ -7,6 +7,7 @@ from datetime import datetime
 from .config import api_key
 from apiclient.discovery import build
 import nltk
+nltk.download('punkt')
 
 # create instance of flask class
 app = Flask(__name__)
@@ -53,18 +54,12 @@ def quotes():
 def videoquotes():
     if request.method == 'POST':
         # save users input
-        affirmation = request.form['affirmation']
         quote = request.form['quote']
-        thought = request.form['thought']
         date = datetime.now()
-        print(affirmation)
         print(quote)
-        print(thought)
     # Update the Mongo database 
         mongo.db.quotes.insert({
-            "affirmation": affirmation,
             "quote": quote,
-            "thought": thought,
             "date": date
             })
     return render_template("videos.html")
@@ -77,6 +72,8 @@ def analysis():
         msg = request.form["message"]
         msg1= request.form["message1"]
         msg2 = request.form["message2"]
+        thought = request.form['thought']
+        affirmation = request.form['affirmation']
 
         pos = 0
         neg = 0
@@ -112,7 +109,9 @@ def analysis():
         "today": msg,
         "tomorrow": msg1,
         "gratitude": msg2,
-        "post": post
+        "post": post,
+        "affirmation": affirmation,
+        "thought": thought
         })
         
     return render_template("analysis.html")
