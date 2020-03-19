@@ -122,9 +122,7 @@ def yourquotes():
     query_list=[]
     for x in query:
         query_dict={}
-        query_dict['affirmation'] = x['affirmation']
         query_dict['quote'] = x['quote']
-        query_dict['thought'] = x['thought']
         try:
             query_dict['date'] = x['date']
         except:
