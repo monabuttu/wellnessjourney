@@ -72,17 +72,46 @@ def videoquotes():
 def analysis():
     if request.method == "POST":
         date = datetime.now()
-        entry_date = request.form["entrydate"]
         mood = request.form["mood"]
         msg = request.form["message"]
         msg1= request.form["message1"]
         msg2 = request.form["message2"]
+
+        pos = 0
+        neg = 0
+        neutral = 0
+        sentence = msg
+        s = TextBlob(sentence)
+        for x in s.sentences:
+            print(x)
+            print(x.sentiment.polarity)
+            if x.sentiment.polarity == 0:
+                print("neutral")
+                neutral += 1
+            elif x.sentiment.polarity > 0:
+                print('positive')
+                pos += 1
+            else:
+                print("negative")
+                neg +=1
+
+        if pos > neg:
+            print('pos post')
+            post = "Positive"
+        elif pos == neg:
+            print('neutral post')
+            post = "Neutral"
+        else:
+            print('neg post')
+            post = "Negative"
+        
         mongo.db.entries.insert({
         "date": date,
         "mood": mood,
         "today": msg,
         "tomorrow": msg1,
-        "gratitude": msg2
+        "gratitude": msg2,
+        "post": post
         })
         
     return render_template("analysis.html")
@@ -125,6 +154,21 @@ def yourvideos():
         query_list.append(query_dict)
     return jsonify(query_list)
     
+@app.route("/api/yourentries")
+def yourentries():
+    query = mongo.db.entries.find()
+    query_list=[]
+    for x in query:
+        query_dict={}
+        query_dict['date'] = x['date']
+        query_dict['mood'] = x['mood']
+        query_dict['today'] = x['today']
+        query_dict['tomorrow'] = x['tomorrow']
+        query_dict['gratitude'] = x['gratitude']
+        query_dict['post'] = x['post']
+        query_list.append(query_dict)
+    return jsonify(query_list)
+
 if __name__ == "__main__":
     app.run(debug=True)
 if __name__ == "__main__":

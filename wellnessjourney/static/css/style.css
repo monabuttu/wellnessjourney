@@ -72,6 +72,11 @@ html {
   }
 }
 
+div.chart {
+  width:10px;
+  margin: auto;
+}
+
 #entryform {
   max-height: 80vh;
   max-width: 90vw;

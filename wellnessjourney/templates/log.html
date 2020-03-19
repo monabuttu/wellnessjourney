@@ -34,13 +34,11 @@
       <div class="row">
         <div class="col" id="entryform">
           <form method='POST' action="/analysis" role='form' name='logentry'>
-            <label for="entrydate">Entry Date</label><br>
-            <br>
-            <input type="date" id="entrydate" name="entrydate"><br>
             <br>
             <p>How would you describe your current mood?</p>
-            <label for="mood">Choose a car:</label>
+            <label for="mood">Choose a mood:</label>
             <select id="mood" name="mood">
+              <option value=""></option>
               <option value="happy">Happy</option>
               <option value="proud">Proud</option>
               <option value="nervous">Nervous</option>
