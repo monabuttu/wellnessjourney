@@ -72,9 +72,26 @@ html {
   }
 }
 
-div.chart {
-  width:10px;
-  margin: auto;
+.form-element label {
+  display: inline-block;
+  width: 150px;
+}
+#chart {
+  width:70vw;
+  height:70vh;
+}
+
+.graph {
+	margin:25px auto;
+	border: 1px solid white;
+}
+
+.graphcontainer {
+	width:80%;
+	margin:25px auto;
+	border:1px solid white;
+	text-align: center;
+	overflow:display;
 }
 
 #entryform {
