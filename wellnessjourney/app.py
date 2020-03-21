@@ -7,17 +7,17 @@ from datetime import datetime
 from .config import api_key
 from apiclient.discovery import build
 import nltk
-# nltk.download('punkt')
+nltk.download('punkt')
 
 # create instance of flask class
 app = Flask(__name__)
 
 mongo = PyMongo(app, uri="mongodb://heroku_5dsnbzq6:n7n5lhm2511elp2vi6ennpsqh5@ds149998.mlab.com:49998/heroku_5dsnbzq6",retryWrites=False)
 
-date_time = datetime.now()
-date = date_time.date()
-print(date)
-print(date_time)
+date = datetime.now()
+date1 = date.month,date.day,date.year
+print(date1)
+# print(date.month,date.day,date.year)
 
 @app.route("/")
 def home():
@@ -30,8 +30,7 @@ def log():
 @app.route("/videos",methods=['POST','GET'])
 def videos():
     if request.method == 'POST':
-        date_time = datetime.now()
-        date = date_time.date()
+        date = datetime.now()
         selection = request.form["selection"]
         length = request.form["length"]
         mongo.db.selection.insert({
@@ -61,8 +60,7 @@ def videoquotes():
     if request.method == 'POST':
         # save users input
         quote = request.form['quote']
-        date_time = datetime.now()
-        date = date_time.date()
+        date = datetime.now()
         print(quote)
     # Update the Mongo database 
         mongo.db.quotes.insert({
@@ -74,8 +72,7 @@ def videoquotes():
 @app.route("/analysis", methods=["GET","POST"])
 def analysis():
     if request.method == "POST":
-        date_time = datetime.now()
-        date = date_time.date()
+        date = datetime.now()
         mood = request.form["mood"]
         msg = request.form["message"]
         msg1= request.form["message1"]
