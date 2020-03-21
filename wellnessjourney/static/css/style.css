@@ -72,6 +72,9 @@ html {
   }
 }
 
+p {
+  margin-top: 10px;
+}
 .form-element label {
   display: inline-block;
   width: 150px;
