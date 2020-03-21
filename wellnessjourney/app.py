@@ -32,13 +32,16 @@ def videos():
     if request.method == 'POST':
         date = datetime.now()
         selection = request.form["selection"]
-        length = request.form["length"]
+        try:
+            length = request.form["length"]
+        except:
+            length = 'any'
         mongo.db.selection.insert({
             "selection": selection,
             "date": date
             })
         youtube = build('youtube','v3',developerKey=api_key)
-        video_request = youtube.search().list(q=f'{selection} motivation',part='snippet',type='video',relevanceLanguage='en',
+        video_request = youtube.search().list(q=f'{selection} motivation english',part='snippet',type='video',relevanceLanguage='en',
                                         videoCategoryId='27',videoDuration=length,order='viewCount', maxResults=2,
                                         regionCode='US')
         response = video_request.execute()

@@ -2,7 +2,6 @@ $(document).ready(function(){
 
     $('#submit_quote').on('click',function(){
         var video_quote = $('#qte').val();
-        console.log(video_quote);
 
         req = $.ajax({
             url: '/videoquotes',

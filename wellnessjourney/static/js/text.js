@@ -1,6 +1,6 @@
 var intro = 'What is your definition of success? There are many definitions and one could argue that the definition depends on each individual.'
 
-var traits_intro = 'Although the definitions of success varies, successful people share similar traits and work hard at cultivating them. One such trait is mainting a postive mindset. Use this app to stay positive, motivated and focused on achieving your definition of success.'
+var traits_intro = 'Although the definitions of success varies, successful people work hard at cultivating a positive attitude. Use this app as a tool to maintain a positive mindset, stay motivated and remain focused on achieving your definition of success.'
 d3.select('#successblurb').html(`<p>${intro}</p>`);
 
 // form element
@@ -16,11 +16,10 @@ form.append('span').html(`<input type = 'radio' value = 'long' id='long' name='l
 
 
 // create search words
-var traits = ['Grit','Patience','Responsibility','Willpower','Confidence','Positive Thinking','Planning',
+var traits = ['Grit','Patience','Responsibility','Willpower','Confidence','Positivity','Planning',
 'Focus','Passion','Resiliency','Faith','Courage','Discipline','Happiness','Gratitude'];
 
 d3.select('#successcharacteristics').html(`<p>${traits_intro}</p><br><p>Choose your preferred video length and topic to start your morning on a positive note!!</p>`)
-
 
 
 

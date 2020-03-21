@@ -75,12 +75,29 @@ d3.json('/api/yourentries').then(entries=>{
         new_dates.push(x);
         });
     
+    var posts = entries.map(d=> d.post);
+    var colors = [];
+    posts.forEach(d=>{
+        if (d==='Positive'){
+            colors.push('pink')
+        }
+        else if (d==='Neutral'){
+            colors.push('beige')
+        }
+        else {
+            colors.push('black')
+        }
+    });
+    
     var classification = entries.map(d=> d.post);
     // Part 3 - Line Chart
     var trace1 = {
         x: dates,
         y: classification,
-        type: "bar"
+        type: "bar",
+        marker: {
+            color: colors
+        }
     };
 
     var data = [trace1];
