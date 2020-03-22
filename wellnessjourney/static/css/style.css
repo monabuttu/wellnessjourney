@@ -84,6 +84,11 @@ p {
   height:70vh;
 }
 
+#chart1 {
+  width:70vw;
+  height:70vh;
+}
+
 .graph {
 	margin:25px auto;
 	border: 1px solid white;
