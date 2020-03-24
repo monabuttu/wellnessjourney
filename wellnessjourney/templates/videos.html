@@ -37,11 +37,14 @@
       <div class="row">
         <div class="col form-element">
           <br>
-          <!-- <form method='POST' action="/videoquotes" role='form' name='userentry' autocomplete="off">  -->
-              <label for="qte">Quote</label>
-              <input type="text" id="qte" name="quote" placeholder="Enter your favorite quote" autocomplete="off"><br>
-              <input type="submit" value="Submit Entry" id="submit_quote">
-          <!-- </form> -->
+            <label for="qte">Quote</label>
+            <input type="text" id="qte" name="quote" placeholder="Enter your favorite quote" autocomplete="off"><br>
+            <p>Did you like this video?</p>
+            <label for="yes">Yes</label>
+            <input type = 'radio' value = 'yes' id='yes' name='like'><br>
+            <label for="no">No</label>
+            <input type = 'radio' value = 'no' id='no' name='like'><br>
+            <input type="submit" value="Submit Entry" id="submit_quote">
         </div>
       </div>
     </div>
@@ -63,9 +66,8 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="/static/js/videos.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
-    <script src="/static/js/submit_quote.js"></script>
+    <!-- <script src="/static/js/submit_quote.js"></script> -->
   </body>
 </html>

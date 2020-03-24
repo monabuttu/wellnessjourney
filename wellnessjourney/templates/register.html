@@ -11,7 +11,7 @@
         }
     
         .jumbotron {
-          background: #000000;
+          background: #000000 url("static/images/starwars.gif") no-repeat bottom left;
           background-size: 100% 100%;
           overflow: auto;
           width: 100%;
@@ -26,7 +26,7 @@
   <div class="main_wrapper">
     <div class="content">
         <div class="container">
-            <form method=POST action="/login" class='login'>
+            <form method=POST action="/register">
                 <div class="form-group">
                     <label for="InputEmail1">Username</label>
                     <input type="text" class="form-control" name="username" placeholder="Username">
@@ -35,14 +35,9 @@
                     <label for="InputPassword1">Password</label>
                     <input type="password" class="form-control" name="pass" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
             </form>
         </div>
-  </div>
-  <div class="bottom_menu">
-    <div class="container">
-        Don't have an account? <a href="/register">Sign up here</a>.
-    </div>
   </div>
     <div id="stars"></div>
     <div id="stars2"></div>

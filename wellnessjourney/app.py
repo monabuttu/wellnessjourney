@@ -1,11 +1,13 @@
 # import flask class
-from flask import Flask,render_template, redirect, request, jsonify
+from flask import Flask,render_template, redirect, request, jsonify, session
 from flask_pymongo import PyMongo
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime
 from .config import api_key
+from eng import isEnglish
 from apiclient.discovery import build
+import bcrypt
 import nltk
 nltk.download('punkt')
 
@@ -19,8 +21,48 @@ date1 = date.month,date.day,date.year
 print(date1)
 # print(date.month,date.day,date.year)
 
+
 @app.route("/")
 def home():
+    if 'username' in session:
+        # return 'You are logged in as ' + session['username']
+        return render_template("home.html")
+    return render_template("index.html")
+
+@app.route('/login', methods=['POST'])
+def login():
+    users = mongo.db.users
+    login_user = users.find_one({'name' : request.form['username']})
+    print(login_user)
+
+    password = login_user['password']
+    hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+    # Check if password matches the hashed password
+    if bcrypt.checkpw(password, hashed):
+        session['username'] = request.form['username']
+        return redirect('/')
+
+    return 'Invalid username/password combination'
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name' : request.form['username']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name' : request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect('/')
+        
+        return 'That username already exists!'
+
+    return render_template('register.html')
+
+@app.route('/logout', methods=['POST','GET'])
+def logout():
+    session.clear()
     return render_template("index.html")
 
 @app.route("/log")
@@ -36,40 +78,57 @@ def videos():
             length = request.form["length"]
         except:
             length = 'any'
-        mongo.db.selection.insert({
-            "selection": selection,
-            "date": date
-            })
+        
         youtube = build('youtube','v3',developerKey=api_key)
-        video_request = youtube.search().list(q=f'{selection} motivation english',part='snippet',type='video',relevanceLanguage='en',
-                                        videoCategoryId='27',videoDuration=length,order='viewCount', maxResults=2,
+        video_request = youtube.search().list(q=f'{selection} motivation',part='snippet',type='video',relevanceLanguage='en',
+                                        videoCategoryId='27',videoDuration=length,order='viewCount', maxResults=1,
                                         regionCode='US')
         response = video_request.execute()
         for x in response['items']:
             video_id = x['id']['videoId']
             title = x['snippet']['title']
-            mongo.db.videos.insert({
-            "video_id": video_id,
-            "title":title
-            })
+            if isEnglish(title) == True:
+                mongo.db.selection.insert({
+                "selection": selection,
+                "video_id": video_id,
+                "title":title,
+                "date": date
+                })
+
     return render_template("videos.html")
 
 @app.route("/quotes")
 def quotes():
     return render_template("quotes.html")
 
-@app.route("/videoquotes",methods=['POST','GET'])
-def videoquotes():
+@app.route("/videoinputs",methods=['POST','GET'])
+def videoinputs():
     if request.method == 'POST':
-        # save users input
-        quote = request.form['quote']
-        date = datetime.now()
-        print(quote)
-    # Update the Mongo database 
-        mongo.db.quotes.insert({
-            "quote": quote,
-            "date": date
+        if request.form['like'] == 'yes':
+            # save users input
+            quote = request.form['quote']
+            like = request.form['like']
+            l_video = request.form['l_video']
+            date = datetime.now()
+        # Update the Mongo database 
+            mongo.db.quotes.insert({
+                "quote": quote,
+                "date": date
+                })
+            mongo.db.videos.insert({
+            "video_id": l_video,
+            # "title":title,
+            "like": like
             })
+        else:
+        # save users input
+            quote = request.form['quote']
+            date = datetime.now()
+        # Update the Mongo database 
+            mongo.db.quotes.insert({
+                "quote": quote,
+                "date": date
+                })
     return render_template("videos.html")
 
 @app.route("/analysis", methods=["GET","POST"])
@@ -146,6 +205,8 @@ def yourselection():
         query_dict={}
         query_dict['selection'] = x['selection']
         query_dict['date'] = x['date']
+        query_dict['video_id']= x['video_id']
+        query_dict['title']= x['title']
         query_list.append(query_dict)
     return jsonify(query_list)
 
@@ -176,6 +237,5 @@ def yourentries():
     return jsonify(query_list)
 
 if __name__ == "__main__":
-    app.run(debug=True)
-if __name__ == "__main__":
+    app.secret_key = 'mysecret'
     app.run(debug=True)

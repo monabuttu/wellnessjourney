@@ -11,13 +11,13 @@ var length = ['Less than 4 minutes', 'Between 4 and 20 minutes','Longer than 20 
 
 // add length options to form
 form.append('span').html(`<input type = 'radio' value = 'short' id='short' name='length'><label for='$short'>${length[0]}</label><br>`)
-form.append('span').html(`<input type = 'radio' value = 'medium' id='long' name='length'><label for='medium'>${length[1]}</label><br>`)
+form.append('span').html(`<input type = 'radio' value = 'medium' id='medium' name='length'><label for='medium'>${length[1]}</label><br>`)
 form.append('span').html(`<input type = 'radio' value = 'long' id='long' name='length'><label for='long'>${length[2]}</label><br><br>`)
 
 
 // create search words
 var traits = ['Grit','Patience','Responsibility','Willpower','Confidence','Positivity','Planning',
-'Focus','Passion','Resiliency','Faith','Courage','Discipline','Happiness','Gratitude'];
+'Focus','Passion','Resiliency','Courage','Discipline','Happiness','Gratitude'];
 
 d3.select('#successcharacteristics').html(`<p>${traits_intro}</p><br><p>Choose your preferred video length and topic to start your morning on a positive note!!</p>`)
 

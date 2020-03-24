@@ -72,6 +72,12 @@ html {
   }
 }
 
+.btn-primary {
+  color: white;
+  background-color: black;
+  border:none;
+}
+
 p {
   margin-top: 10px;
 }
