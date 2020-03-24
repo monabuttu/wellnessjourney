@@ -236,5 +236,5 @@ def yourentries():
     return jsonify(query_list)
 
 if __name__ == "__main__":
-    app.secret_key = 'mysecret'
+    app.secret_key = 'mysecret123'
     app.run(debug=True)
