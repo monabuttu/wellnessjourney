@@ -1,6 +1,8 @@
 autoit==0.1
+bcrypt==3.1.7
 cachetools==4.0.0
 certifi==2019.11.28
+cffi==1.14.0
 chardet==3.0.4
 Click==7.0
 DateTime==4.3
@@ -27,6 +29,7 @@ Pillow==7.0.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 PyAutoIt==0.6.0
+pycparser==2.20
 pymongo==3.10.1
 python-dateutil==2.8.1
 python-dotenv==0.12.0

@@ -33,7 +33,6 @@ def home():
 def login():
     users = mongo.db.users
     login_user = users.find_one({'name' : request.form['username']})
-    print(login_user)
 
     password = login_user['password']
     hashed = bcrypt.hashpw(password, bcrypt.gensalt())
