@@ -12,7 +12,9 @@ import nltk
 nltk.download('punkt')
 
 # create instance of flask class
+
 app = Flask(__name__)
+app.secret_key = 'mysecret123'
 
 mongo = PyMongo(app, uri="mongodb://heroku_5dsnbzq6:n7n5lhm2511elp2vi6ennpsqh5@ds149998.mlab.com:49998/heroku_5dsnbzq6",retryWrites=False)
 
@@ -236,5 +238,4 @@ def yourentries():
     return jsonify(query_list)
 
 if __name__ == "__main__":
-    app.secret_key = 'mysecret123'
     app.run(debug=True)
