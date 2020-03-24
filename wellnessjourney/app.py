@@ -5,7 +5,7 @@ from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime
 from .config import api_key
-from eng import isEnglish
+from .eng import isEnglish
 from apiclient.discovery import build
 import bcrypt
 import nltk
