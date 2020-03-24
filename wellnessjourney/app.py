@@ -218,7 +218,7 @@ def yourvideos():
     for x in query:
         query_dict={}
         query_dict['video_id'] = x['video_id']
-        query_dict['title'] = x['title']
+        query_dict['like'] = x['like']
         query_list.append(query_dict)
     return jsonify(query_list)
     
