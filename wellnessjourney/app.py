@@ -82,19 +82,28 @@ def videos():
         
         youtube = build('youtube','v3',developerKey=api_key)
         video_request = youtube.search().list(q=f'{selection} motivation',part='snippet',type='video',relevanceLanguage='en',
-                                        videoCategoryId='27',videoDuration=length,order='viewCount', maxResults=1,
+                                        videoCategoryId='27',videoDuration=length,order='viewCount', maxResults=5,
                                         regionCode='US')
         response = video_request.execute()
         for x in response['items']:
             video_id = x['id']['videoId']
             title = x['snippet']['title']
-            if isEnglish(title) == True:
-                mongo.db.selection.insert({
-                "selection": selection,
-                "video_id": video_id,
-                "title":title,
-                "date": date
-                })
+            previous_video = mongo.db.selection.find_one({'title' : title})
+            if previous_video != None:
+                previous_title = previous_video['title']
+            else:
+                previous_title = ""
+            if previous_title != title:
+                if isEnglish(title) == True:
+                    mongo.db.selection.insert({
+                    "selection": selection,
+                    "video_id": video_id,
+                    "title":title,
+                    "date": date
+                    })
+                break
+            else:
+                print('duplicate')
 
     return render_template("videos.html")
 
