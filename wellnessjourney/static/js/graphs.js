@@ -16,6 +16,7 @@ d3.json('/api/yourentries').then(entries=>{
     console.log(new_dates)
     
     var posts = entries.map(d=> d.post);
+    var postgroup = posts.reduce((r,c) => (r[c] = (r[c] || 0) + 1, r), {});
 
     var colors = ['pink','beige','black'];
     var data = [{
