@@ -149,8 +149,6 @@ def analysis():
         msg = request.form["message"]
         msg1= request.form["message1"]
         msg2 = request.form["message2"]
-        thought = request.form['thought']
-        affirmation = request.form['affirmation']
 
         pos = 0
         neg = 0
@@ -186,9 +184,7 @@ def analysis():
         "today": msg,
         "tomorrow": msg1,
         "gratitude": msg2,
-        "post": post,
-        "affirmation": affirmation,
-        "thought": thought
+        "post": post
         })
         
     return render_template("analysis.html")

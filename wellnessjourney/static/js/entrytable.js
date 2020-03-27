@@ -1,7 +1,5 @@
 d3.json('/api/yourentries').then(entries=>{
 
-console.log(entries);
-
 var tableData = entries;
 
 // get table element
@@ -22,19 +20,11 @@ var button = d3.selectAll(".form-control");
 button.on("change", function() {
 
   // Select the input element and get the raw HTML node
-  var dateinputValue = d3.select('#datetime').node().value;
-  console.log(`this is a ${dateinputValue}`);
   var moodinputValue = d3.select('#mood').node().value;
   var polarinputValue = d3.select('#polar').node().value;
 
   
 var  filteredData = tableData;
-
-if (dateinputValue != "") {
-  filteredData = filteredData.filter(function (date) {
-  return date.datetime === dateinputValue;
-});
-}
 
   if (moodinputValue != "") {
     filteredData = filteredData.filter(function (mood) {
@@ -47,8 +37,6 @@ if (polarinputValue != "") {
         return polar.post === polarinputValue;
     });
 }
-    
-  console.log(filteredData);
 
   tableBody.selectAll("tr").remove();
   tableBody.selectAll("td").remove();
@@ -77,7 +65,6 @@ button2.on("click",function(){
     }); 
 });
 
-var dateinputValue = d3.select('#datetime').property("value","");
 var moodinputValue = d3.select('#mood').property("value","");
 var polarinputValue = d3.select('#polar').property("value","");
 

@@ -13,6 +13,9 @@ $(document).ready(function(){
 
         console.log(liked);
         $('#qte').val("");
+
+        // $("input[name='like']:checked").attr('checked', false);
+
     });
 
 });

@@ -36,6 +36,8 @@ d3.json('/api/yourentries').then(entries=>{
             "r":25,
             "t":30
         },
+        title: {
+            text:'Sentiment Analysis'},
         showlegend: true,
 	    legend: {"orientation": "h"}
 
@@ -69,6 +71,8 @@ d3.json('/api/yourselection').then(selections =>{
 
     var layout = {
         autosize: true,
+        title: {
+            text:'Video Selection History'},
         margin: {
             "b":95,
             "l":65,
@@ -105,6 +109,8 @@ window.onresize = function() {
     
         var layout = {
             autosize: true,
+            title: {
+                text:'Video Selection History'},
             margin: {
                 "b":95,
                 "l":65,
@@ -129,6 +135,8 @@ window.onresize = function() {
         marker: {
             colors: colors
         },
+        title: {
+            text:'Sentiment Analysis'},
         type: 'pie'
       }];
 
