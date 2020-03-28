@@ -1,5 +1,5 @@
 # import flask class
-from flask import Flask,render_template, redirect, request, jsonify, session
+from flask import Flask,render_template, redirect, request, jsonify, session, flash
 from flask_pymongo import PyMongo
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
@@ -7,8 +7,18 @@ from datetime import datetime
 from .config import api_key
 from .eng import isEnglish
 from apiclient.discovery import build
+from functools import wraps
 import bcrypt
 import nltk
+
+def auth_required(func):
+    @wraps(func)
+    def _auth_required(*args, **kwargs):
+        if 'username' not in session:
+            return redirect('/login')
+        func(*args, **kwargs)
+    return _auth_required
+
 nltk.download('punkt')
 
 # create instance of flask class
@@ -26,24 +36,33 @@ print(date1)
 
 @app.route("/")
 def home():
-    if 'username' in session:
-        # return 'You are logged in as ' + session['username']
-        return render_template("home.html")
-    return render_template("index.html")
+    if 'username' not in session:
+        return redirect ('/login')
+    return render_template("home.html")
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST','GET'])
 def login():
+    if request.method == 'GET':
+        return render_template('index.html')
+    
     users = mongo.db.users
     login_user = users.find_one({'name' : request.form['username']})
 
-    password = login_user['password']
-    hashed = bcrypt.hashpw(password, bcrypt.gensalt())
-    # Check if password matches the hashed password
-    if bcrypt.checkpw(password, hashed):
-        session['username'] = request.form['username']
-        return redirect('/')
+    if login_user is None:
+        flash('Invalid username/password combination')
+        return redirect('/login')
+    
+    user_password = request.form.get('pass')
 
-    return 'Invalid username/password combination'
+    # Check if password matches the hashed password
+    if not bcrypt.checkpw(user_password.encode('utf8'), login_user['password']):
+        flash('Invalid username/password combination')
+        return redirect('/login')
+
+    session['username'] = request.form['username']
+    
+    return redirect('/')
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -52,26 +71,31 @@ def register():
         existing_user = users.find_one({'name' : request.form['username']})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf8'), bcrypt.gensalt())
             users.insert({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
             return redirect('/')
-        
-        return 'That username already exists!'
+
+        flash('That username already exists!')
+        return redirect('/register')
 
     return render_template('register.html')
 
 @app.route('/logout', methods=['POST','GET'])
 def logout():
     session.clear()
-    return render_template("index.html")
+    return redirect('/')
 
 @app.route("/log")
 def log():
+    if 'username' not in session:
+        return redirect ('/login')
     return render_template("log.html")
 
 @app.route("/videos",methods=['POST','GET'])
 def videos():
+    if 'username' not in session:
+        return redirect ('/login')
     if request.method == 'POST':
         date = datetime.now()
         selection = request.form["selection"]
@@ -94,7 +118,7 @@ def videos():
             else:
                 previous_title = ""
             if previous_title != title:
-                if isEnglish(title) == True:
+                if isEnglish(title) and not 'hindi' in title.lower():
                     mongo.db.selection.insert({
                     "selection": selection,
                     "video_id": video_id,
@@ -104,15 +128,19 @@ def videos():
                 break
             else:
                 print('duplicate')
-
+    
     return render_template("videos.html")
 
 @app.route("/quotes")
 def quotes():
+    if 'username' not in session:
+        return redirect ('/login')
     return render_template("quotes.html")
 
 @app.route("/videoinputs",methods=['POST','GET'])
 def videoinputs():
+    if 'username' not in session:
+        return redirect ('/login')
     if request.method == 'POST':
         if request.form['like'] == 'yes':
             # save users input
@@ -143,6 +171,8 @@ def videoinputs():
 
 @app.route("/analysis", methods=["GET","POST"])
 def analysis():
+    if 'username' not in session:
+        return redirect ('/login')
     if request.method == "POST":
         date = datetime.now()
         mood = request.form["mood"]
@@ -174,9 +204,12 @@ def analysis():
         elif pos == neg:
             print('neutral post')
             post = "Neutral"
-        else:
+        elif neg > pos:
             print('neg post')
             post = "Negative"
+        else:
+            print('neutral post')
+            post = "Neutral"
         
         mongo.db.entries.insert({
         "date": date,
