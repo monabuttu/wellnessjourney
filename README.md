@@ -1,4 +1,6 @@
-# Wellness Journey 
+# **Wellness Journey** 
+
+Full-stack application designed to help users develop positive thinking and behaviours through motivational videos and journal entries. 
 
 [Try it yourself!](https://wellnessjourney.herokuapp.com/login)
 
