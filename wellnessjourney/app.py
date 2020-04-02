@@ -1,11 +1,14 @@
 # import flask class
 from flask import Flask,render_template, redirect, request, jsonify, session, flash
+from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime
-from .config import api_key
-from .eng import isEnglish
+import time
+import schedule
+from config import api_key
+from eng import isEnglish
 from apiclient.discovery import build
 from functools import wraps
 import bcrypt
@@ -24,7 +27,17 @@ nltk.download('punkt')
 # create instance of flask class
 
 app = Flask(__name__)
-app.secret_key = 'mysecret123'
+app.secret_key = ''
+
+app.config["MAIL_SERVER"] = 'smtp.gmail.com'
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"]= True
+app.config["MAIL_USE_SSL"]= False
+app.config["MAIL_USERNAME"]= ''
+app.config["MAIL_PASSWORD"]= ''
+app.config["MAIL_DEFAULT_SENDER"]= ''
+
+mail = Mail(app)
 
 mongo = PyMongo(app, uri="mongodb://heroku_5dsnbzq6:n7n5lhm2511elp2vi6ennpsqh5@ds149998.mlab.com:49998/heroku_5dsnbzq6",retryWrites=False)
 
@@ -274,6 +287,18 @@ def yourentries():
         query_dict['post'] = x['post']
         query_list.append(query_dict)
     return jsonify(query_list)
+
+def email():
+    with app.app_context():
+        msg = Message(subject="Today's Goal", recipients=[''], body='Do something')
+        mail.send(msg)
+
+schedule.every().day.at("20:51").do(email)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
