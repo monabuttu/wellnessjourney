@@ -13,11 +13,18 @@ Full-stack application designed to help users develop positive thinking and beha
 - [Heroku](https://www.heroku.com/) - Cloud Application Platform
 - [MongoDB](https://www.mongodb.com/) - NoSQL Database
 - [Flask](https://palletsprojects.com/p/flask/) - Web Application Framework
+- [jQuery/Ajax](https://jquery.com/) - Front-end framework 
 - [Bootstrap](https://getbootstrap.com/) - Front-End Framework
+- [D3](https://d3js.org/) - API calls
+- [Plotly](https://plotly.com/python/) - Graphing
 - [GoNative](https://gonative.io/) - Application Wrapper
+
 
 ## Planned Updates
 
+This app is still being developed, and is not yet at minimum viable product status.
+
+What needs to be added:
 - Scheduled emails for goal reminders
 - Database restrictions
 - UI improvements
