@@ -17,3 +17,11 @@ Full-stack application designed to help users develop positive thinking and beha
 - [GoNative](https://gonative.io/) - Application Wrapper
 
 ## Planned Updates
+
+- Scheduled emails for goal reminders
+- Database restrictions
+- UI improvements
+- User authentication improvements
+- Automatic posts to instagram
+- Machine learning - find trends between mood and entry
+- Access to liked videos
