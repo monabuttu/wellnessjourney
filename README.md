@@ -6,7 +6,7 @@ Full-stack application designed to help users develop positive thinking and beha
 
 ## Or you can watch the demo video [here](https://drive.google.com/open?id=1ExAZnj3ux8Jlw_v4RgjcsbtbUZCoo-ng)
 
-![](wellnessjourney/static/images/loginpage.PNG | height=250)
+![](wellnessjourney/static/images/loginpage.PNG)
 
 ## Built With
 
