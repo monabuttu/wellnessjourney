@@ -13,7 +13,7 @@ Flask-PyMongo==2.3.0
 google-api-python-client==1.7.11
 google-auth==1.11.2
 google-auth-httplib2==0.0.3
-httplib2==0.17.0
+httplib2==0.18.0
 idna==2.9
 imageio==2.1.2
 instagram-private-api==1.6.0.0
